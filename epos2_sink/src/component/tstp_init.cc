@@ -19,6 +19,11 @@ void TSTP::Locator::bootstrap()
     _confidence = 100;
 
     // This is used if your machine ID is unlisted below
+    if(Traits<TSTP>::sink) {
+           _here = TSTP::sink();
+           TSTP::coordinates(Global_Coordinates(0, 0, 0));
+    } else
+        _here = Coordinates(10,10,0); // Adjust this value to the coordinates of the sensor
 
     // You can edit the values below to define coordinates based on the machine ID
     if(!memcmp(Machine::id(), "\x00\x4b\x12\x00\x00\x00\x00\x00", 8)) // Adjust this value to the ID of the mote

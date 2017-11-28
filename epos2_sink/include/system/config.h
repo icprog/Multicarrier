@@ -11,7 +11,7 @@
 #define ARCH armv7
 #define MACH cortex
 #define MMOD emote3
-#define APPL can_tstp_gateway
+#define APPL can_tstp_sensor
 #define __mode_library__
 #define __arch_armv7__
 #define __mach_cortex__

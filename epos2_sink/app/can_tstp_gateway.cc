@@ -10,6 +10,8 @@ const TSTP::Time INTEREST_EXPIRY = 2ull * 60 * 60 * 1000000;
 
 IF<Traits<USB>::enabled, USB, UART>::Result io;
 
+OStream cout;
+
 template<typename T>
 class Printer: public Smart_Data_Common::Observer
 {
@@ -20,7 +22,9 @@ public:
     ~Printer() { _data->detach(this); }
 
     void update(Smart_Data_Common::Observed * obs) {
-        print(_data->db_record());
+        //print(_data->db_record());
+        int x = *_data;
+        cout << x << endl;
     }
 
     void print(const Smart_Data_Common::DB_Record & d) {
@@ -34,7 +38,7 @@ private:
 
 int main()
 {
-    // Get epoch time from serial
+    /*// Get epoch time from serial
     TSTP::Time epoch = 0;
     char c = io.get();
     if(c != 'X') {
@@ -46,14 +50,14 @@ int main()
             c = io.get();
         }
         TSTP::epoch(epoch);
-    }
+    }*/
 
     GPIO led('C', 3, GPIO::OUT);
 
     // Interest center points
-    TSTP::Coordinates center(0, 600, 100);
+    TSTP::Coordinates center(0, 20, 10);
 
-    // Regions of interestatom
+    // Regions of interest
     TSTP::Time start = TSTP::now();
     TSTP::Time end = start + INTEREST_EXPIRY;
     TSTP::Region region(center, 5000, start, end);

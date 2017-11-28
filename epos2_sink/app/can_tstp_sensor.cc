@@ -12,7 +12,7 @@ int main(){
 
     // create the spot smart data on the device
 	new CAN_Data(0, 1000000, CAN_Data::ADVERTISED);
-
+	
     Thread::self()->suspend();
 
     return 0;
