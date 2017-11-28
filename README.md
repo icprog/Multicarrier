@@ -6,7 +6,7 @@ EPOS2 version to read data from CAN port and send it over TSTP
 ## epos2_sensor_tests
 EPOS2 version to simulate sensors for sync testing
 
-## epos2_sync
+## epos2_sink
 EPOS2 version to read data of sensors over TSTP
 
 
