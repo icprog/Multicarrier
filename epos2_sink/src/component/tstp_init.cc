@@ -21,7 +21,7 @@ void TSTP::Locator::bootstrap()
     // This is used if your machine ID is unlisted below
     if(Traits<TSTP>::sink) {
            _here = TSTP::sink();
-           TSTP::coordinates(Global_Coordinates(0, 0, 0));
+           TSTP::coordinates(Global_Coordinates(375781800, 423931100, 292066100)); //GATEWAY GLOBAL COORDDINAES
     } else
         _here = Coordinates(10,10,0); // Adjust this value to the coordinates of the sensor
 

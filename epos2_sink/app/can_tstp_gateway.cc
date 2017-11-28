@@ -22,9 +22,9 @@ public:
     ~Printer() { _data->detach(this); }
 
     void update(Smart_Data_Common::Observed * obs) {
-        //print(_data->db_record());
+        print(_data->db_record());
         int x = *_data;
-        cout << x << endl;
+        // cout << x << endl;
     }
 
     void print(const Smart_Data_Common::DB_Record & d) {
@@ -38,7 +38,8 @@ private:
 
 int main()
 {
-    /*// Get epoch time from serial
+    //When connected to the gateway python script
+    // Get epoch time from serial
     TSTP::Time epoch = 0;
     char c = io.get();
     if(c != 'X') {
@@ -50,7 +51,7 @@ int main()
             c = io.get();
         }
         TSTP::epoch(epoch);
-    }*/
+    }
 
     GPIO led('C', 3, GPIO::OUT);
 
