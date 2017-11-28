@@ -406,6 +406,43 @@ private:
     static Distance_Sensor * _dev[MAX_DEVICES];
 };
 
+class CAN_Sensor : private HCSR04
+{
+    static const unsigned int MAX_DEVICES = 8;
+
+public:
+    typedef _UTIL::Observed Observed;
+    typedef _UTIL::Observer Observer;
+
+    static const unsigned int UNIT = TSTP::Unit::Mass;
+    static const unsigned int NUM = TSTP::Unit::I32;
+    static const int ERROR = 0; // Unknown
+
+    static const bool INTERRUPT = false;
+    static const bool POLLING = true;
+
+public:
+    CAN_Sensor(unsigned int dev, GPIO * trigger, GPIO * echo) : HCSR04(trigger, echo) {
+        assert(dev < MAX_DEVICES);
+        _dev[dev] = this;
+    }
+
+    static void sense(unsigned int dev, Smart_Data<CAN_Sensor> * data) {
+        //assert(dev < MAX_DEVICES);
+        //if(_dev[dev])
+            //data->_value = _dev[dev]->get();
+        data->_value = 42;
+    }
+
+    static void actuate(unsigned int dev, Smart_Data<CAN_Sensor> * data, const Smart_Data<CAN_Sensor>::Value & command) {}
+
+    static void attach(Observer * obs) {}
+    static void detach(Observer * obs) {}
+
+private:
+    static CAN_Sensor * _dev[MAX_DEVICES];
+};
+
 typedef Smart_Data<Current_Sensor> Current;
 typedef Smart_Data<ADC_Sensor> Luminous_Intensity;
 typedef Smart_Data<Temperature_Sensor> Temperature;
@@ -422,6 +459,7 @@ typedef Smart_Data<Distance_Sensor> Distance;
 #endif
 
 typedef Smart_Data<Keyboard_Sensor> Acceleration;
+typedef Smart_Data<CAN_Sensor> CAN_Data;
 
 __END_SYS
 

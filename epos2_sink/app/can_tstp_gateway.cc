@@ -4,7 +4,6 @@
 
 using namespace EPOS;
 
-
 const TSTP::Time DATA_PERIOD = 1 * 1000000;
 const TSTP::Time DATA_EXPIRY = 2 * DATA_PERIOD;
 const TSTP::Time INTEREST_EXPIRY = 2ull * 60 * 60 * 1000000;
@@ -52,19 +51,19 @@ int main()
     GPIO led('C', 3, GPIO::OUT);
 
     // Interest center points
-    TSTP::Coordinates center(10, 10, 0);
+    TSTP::Coordinates center(0, 600, 100);
 
-    // Regions of interest
+    // Regions of interestatom
     TSTP::Time start = TSTP::now();
     TSTP::Time end = start + INTEREST_EXPIRY;
     TSTP::Region region(center, 5000, start, end);
 
     // Data of interest
     Switch data_switch(region, DATA_EXPIRY, DATA_PERIOD);
-    Mass_Sensor data_spot(region, DATA_EXPIRY, DATA_PERIOD);
+    CAN_Data data_can(region, DATA_EXPIRY, DATA_PERIOD);
 
     // Event-driven actuators
-    Printer<Mass_Sensor> p11(&data_spot);
+    Printer<CAN_Data> p11(&data_can);
 
     // Time-triggered actuators
     while(TSTP::now() < end) {

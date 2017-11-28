@@ -6,7 +6,7 @@
 #=========================================================================
 # PATHS
 #=========================================================================
-EPOS=/home/thiago/Documentos/CAN_EPOS/epos2_can
+EPOS=/home/langer/Multicarrier/epos2_can
 TMP=/tmp
 INC=$EPOS/include
 SRC=$EPOS/src

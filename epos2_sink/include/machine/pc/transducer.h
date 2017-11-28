@@ -69,7 +69,7 @@ public:
 };
 
 typedef Smart_Data<Keyboard_Sensor> Acceleration;
-typedef Smart_Data<Mass_Sensor> Mass_Sensor;
+typedef Smart_Data<CAN_Sensor> CAN_Data2;
 
 __END_SYS
 

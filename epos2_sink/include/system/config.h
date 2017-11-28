@@ -10,12 +10,12 @@
 #define MODE library
 #define ARCH armv7
 #define MACH cortex
-#define MMOD lm3s811
+#define MMOD emote3
 #define APPL can_tstp_gateway
 #define __mode_library__
 #define __arch_armv7__
 #define __mach_cortex__
-#define __mmod_lm3s811__
+#define __mmod_emote3__
 
 #if defined (__arch_avr__)
 #define __no_networking__
