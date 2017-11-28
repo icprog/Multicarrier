@@ -38,7 +38,38 @@ public:
     static void actuate(unsigned int dev, Smart_Data<Keyboard_Sensor> * data, const Smart_Data<Keyboard_Sensor>::Value & command) {}
 };
 
+class Mass_Sensor
+{
+public:
+    static const unsigned int UNIT = TSTP::Unit::Mass;
+    static const unsigned int NUM = TSTP::Unit::I32;
+    static const int ERROR = 0; // Unknown
+
+    static const bool INTERRUPT = false;
+    static const bool POLLING = true;
+
+   typedef _UTIL::Observed Observed;
+   typedef _UTIL::Observer Observer;
+
+public:
+   Mass_Sensor() {}
+
+   static void attach(void * x) { }
+   static void detach(void * x) { }
+
+   static void sense(unsigned int dev, Smart_Data<Mass_Sensor> * data) {
+    //    if(ready_to_get())
+        //    data->_value = get();
+        //    data->_value = -42;
+    //    else
+           data->_value = 4200000000000;
+   }
+
+   static void actuate(unsigned int dev, Smart_Data<Mass_Sensor> * data, const Smart_Data<Keyboard_Sensor>::Value & command) { }
+};
+
 typedef Smart_Data<Keyboard_Sensor> Acceleration;
+typedef Smart_Data<Mass_Sensor> Mass_Sensor;
 
 __END_SYS
 
